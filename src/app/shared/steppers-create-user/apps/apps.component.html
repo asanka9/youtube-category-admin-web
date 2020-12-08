@@ -1,1 +1,29 @@
-<p>apps works!</p>
+<div class="row mt-4">
+  <div class="col-6">
+    <cdk-virtual-scroll-viewport itemSize="400" class="scroll-container">
+      <div *ngFor="let item of appList" class="scroll-item">
+        <mat-card class="example-card">
+          <p><strong>App Name :</strong> {{ item.payload.doc.data().appName }}</p>
+          <p><strong>Database Name :</strong> {{ item.payload.doc.data().databaseName }}</p>
+          <mat-card-actions>
+            <button class="btn btn-danger" (click)="deleteApp(item)" mat-raised-button>DELETE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <div class="col-6">
+    <div>
+      <mat-form-field  style="width: 500px;">
+        <mat-label>App Name :</mat-label>
+        <input [(ngModel)]="appName" matInput  >
+      </mat-form-field>
+      <mat-form-field  style="width: 500px;">
+        <mat-label>DataBase Name :</mat-label>
+        <input [(ngModel)]="databaseName" matInput  >
+      </mat-form-field>
+
+      <button style="width: 300px;" type="submit" class="btn btn-success"  (click)="addApp()" mat-raised-button>ADD</button>
+    </div>
+  </div>
+</div>

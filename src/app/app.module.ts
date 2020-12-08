@@ -23,7 +23,10 @@ import {CreateUserComponent} from './module/create-user/create-user.component';
 import {HomeComponent} from './module/home/home.component';
 import {AppsComponent} from './shared/steppers-create-user/apps/apps.component';
 import {CategoryComponent} from './shared/steppers-create-user/category/category.component';
-import {ItemsComponent} from './shared/steppers-create-user/items/items.component';
+import {ItemsComponent,SafePipe} from './shared/steppers-create-user/items/items.component';
+import { LoginComponent } from './module/login/login.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -32,8 +35,12 @@ import {ItemsComponent} from './shared/steppers-create-user/items/items.componen
     CategoryComponent,
     AppsComponent,
     HomeComponent,
+    SafePipe,
     CreateItemsComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     MatInputModule,

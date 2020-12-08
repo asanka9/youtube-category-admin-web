@@ -1,1 +1,58 @@
-<p>items works!</p>
+<div class="row">
+  <div class="col-6">
+    <mat-form-field appearance="none">
+      <mat-label>APP Name</mat-label>
+      <mat-select disableRipple (selectionChange)="selectApp($event)">
+        <mat-option *ngFor="let app of appList" [value]="app">
+          {{app.appName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  <div class="col-6">
+    <mat-form-field appearance="none">
+      <mat-label>Category Name</mat-label>
+      <mat-select disableRipple (selectionChange)="selectCategory($event)" >
+        <mat-option *ngFor="let item of categoryList" [value]="item">
+          {{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<div class="row mt-4">
+  <div class="col-6">
+    <cdk-virtual-scroll-viewport itemSize="400" class="scroll-container">
+      <div *ngFor="let item of itemList" class="scroll-item">
+        <mat-card class="example-card">
+          <div *ngIf="!type">
+            <img style="max-width: 400px; max-height: 300px;" mat-card-image [src]="item.payload.doc.data().url">
+          </div>
+          <div *ngIf="type">
+            <iframe width="450" height="250" [src]="item.payload.doc.data().em_url | safe"
+            ></iframe>
+            {{item.payload.doc.data().url}}
+          </div>
+          <mat-card-actions>
+            <button (click)="deleteItem(item)" class="btn btn-danger" mat-button>DELETE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <div class="col-6">
+    <form>
+
+      <div class="form-group">
+        <label for="exampleInputPassword1">URL</label>
+        <input #url type="text" class="form-control" id="exampleInputPassword1" placeholder="URL">
+      </div>
+      <div class="form-group">
+        <button type="submit" (click)="addItem(url.value)" class="btn btn-primary form-control">Submit</button>
+
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-create-user',
@@ -7,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateUserComponent implements OnInit {
 
-  youtubeList = [1,2,3,34,4]
+  validity = false;
 
-  constructor() { }
+  constructor(private authentication:AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
-  onBookChange(event){
-    alert(event.value);
+  async createUser(email:string,password:string){
+    await this.authentication.signup(email,password);
+  }
+
+  async createAdmin(){
 
   }
 

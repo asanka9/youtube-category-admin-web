@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {DataBaseService} from 'src/app/services/data-base.service';
 
 @Component({
   selector: 'app-apps',
@@ -7,9 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppsComponent implements OnInit {
 
-  constructor() { }
+
+  youtubeList = [1,2,3,34,4]
+  appList = []
+
+  appName :string;
+  databaseName :string;
+
+  constructor(private database : DataBaseService) { }
 
   ngOnInit(): void {
+     this.database.getAllApps().subscribe(
+      res=>  (this.appList = res)
+    );
   }
 
+  addApp(){
+    this.database.createNewApp(
+      {
+        'appName':this.appName,
+        'databaseName':this.databaseName
+      }
+    );
+  }
+
+  deleteApp(data){
+    this.database.deleteApp(data);
+  }
 }
