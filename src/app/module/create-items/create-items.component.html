@@ -1,0 +1,19 @@
+<div class="container">
+
+  <mat-vertical-stepper [linear]="false" #stepper>
+    <!-- APP STEPPER -->
+    <mat-step>
+      <ng-template matStepLabel>ITEMS</ng-template>
+      <app-items></app-items>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Category</ng-template>
+      <app-category></app-category>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>APP</ng-template>
+      <app-apps></app-apps>
+    </mat-step>
+  </mat-vertical-stepper>
+
+</div>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "categorizer-89b74": {
+      "hosting": {
+        "u-category-admin-web": [
+          "categorizer-89b74"
+        ]
+      }
+    }
+  }
+}
